@@ -1,0 +1,17 @@
+.gradient{
+	border-radius: 0px;
+    color: #13a7f1;
+    border: solid 0px #13a7f1;
+    background: #13a7f1;
+    background: -webkit-gradient(linear, center top, center bottom, from(#1ac4e7), to(#0a78ff));
+    background: -moz-linear-gradient(top,  #1dd8f9,  #13a7f1);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#1dd8f9', endColorstr='#13a7f1');
+}
+
+.headimg{
+	border-radius: 50%;
+	width:80px;
+	height:80px;
+	border-style:solid solid solid solid;border-color:#000000 #000000 #000000 #000000;
+
+}
