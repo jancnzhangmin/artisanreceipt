@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="top:53px;left:21px;height:auto;" onParamsReceive="modelParamsReceive"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="top:53px;left:21px;height:auto;" onParamsReceive="modelParamsReceive" onActive="modelActive"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bartaskData" idColumn="id">
    <column name="id" type="String" xid="xid1"></column>
    <column name="preprice" type="String" xid="xid2"></column>

@@ -2,14 +2,14 @@ define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 var orderid;
+var hasoffer;
 	var Model = function() {
 		this.callParent();
 	};
 
-	Model.prototype.modelParamsReceive = function(event) {
-	
-		if (event.params.data) {
-		if(event.params.data.hasoffer == '1'){
+Model.prototype.refreshdata = function(){
+
+		if(hasoffer == '1'){
 		var self = this;
 		$.ajax({
 			async : false,
@@ -19,7 +19,7 @@ var orderid;
 			jsonp : 'callback',
 			timeout : 5000,
 			data : {
-				orderid : event.params.data.id,
+				orderid : orderid,
 				openid : openid
 			},
 			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
@@ -42,7 +42,7 @@ var orderid;
 		});
 					
 		}
-		orderid = event.params.data.id;
+		
 			var self = this;
 			$.ajax({
 				async : false,
@@ -52,7 +52,7 @@ var orderid;
 				jsonp : 'callback',
 				timeout : 5000,
 				data : {
-					id : event.params.data.id
+					id : orderid
 				},
 				success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
 					var data = self.comp("bartaskData");
@@ -176,6 +176,14 @@ var orderid;
 					justep.Util.hint("错误，请检查网络");
 				}
 			});
+		
+};
+
+	Model.prototype.modelParamsReceive = function(event) {
+	orderid = event.params.data.id;
+	hasoffer = event.params.data.hasoffer;
+	if (event.params.data) {
+		this.refreshdata();
 		}
 	};
 
@@ -187,6 +195,10 @@ var orderid;
 			}
 		}
 		justep.Shell.showPage(require.toUrl("./offer.w"), params);
+	};
+
+	Model.prototype.modelActive = function(event){
+this.refreshdata();
 	};
 
 	return Model;

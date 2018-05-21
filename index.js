@@ -1,5 +1,5 @@
 var url = 'http://artisan.liushushu.com/';
-//var url = 'http://192.168.0.100:3000/';
+var url = 'http://192.168.0.106:3000/';
 
 var openid;
 var openid='jancn';
@@ -22,7 +22,7 @@ define(function(require) {
 	};
 
 	Model.prototype.modelLoad = function(event){
-			openid = this.getContext().getRequestParameter("openid");
+//			openid = this.getContext().getRequestParameter("openid");
 		$.ajax({
 			async : false,
 			url : url + "apis/setwxartisaninfo",

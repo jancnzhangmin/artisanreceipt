@@ -28,6 +28,7 @@ define(function(require) {
 				summary:self.comp('summaryarea').val()
 			},
 			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+			self.close();
 
 			},
 			error : function(xhr) {
