@@ -1,8 +1,8 @@
 var url = 'http://artisan.liushushu.com/';
-var url = 'http://192.168.0.106:3000/';
+//var url = 'http://192.168.0.109:3000/';
 
 var openid;
-var openid='jancn';
+//var openid='opN8uxEts2tNZpp2U8Nm8V_ecV1c';
 define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
@@ -22,7 +22,7 @@ define(function(require) {
 	};
 
 	Model.prototype.modelLoad = function(event){
-//			openid = this.getContext().getRequestParameter("openid");
+			openid = this.getContext().getRequestParameter("openid");
 		$.ajax({
 			async : false,
 			url : url + "apis/setwxartisaninfo",

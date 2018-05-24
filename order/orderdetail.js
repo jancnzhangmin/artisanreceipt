@@ -3,6 +3,7 @@ define(function(require) {
 	var justep = require("$UI/system/lib/justep");
 var orderid;
 var hasoffer;
+var offerstatus;
 	var Model = function() {
 		this.callParent();
 	};
@@ -182,9 +183,21 @@ Model.prototype.refreshdata = function(){
 	Model.prototype.modelParamsReceive = function(event) {
 	orderid = event.params.data.id;
 	hasoffer = event.params.data.hasoffer;
+	offerstatus = event.params.data.offerstatus;
+	if(offerstatus != '0'){
+	$(this.getElementByXid("row25")).hide();
+	}
+		if(hasoffer == '1'){
+	$(this.getElementByXid("div1")).hide();
+	}
 	if (event.params.data) {
 		this.refreshdata();
 		}
+		
+		if(offerstatus == '3' && hasoffer == '1'){
+		this.comp('enterserviceBtn').set({'disabled':false});
+		}
+		
 	};
 
 	Model.prototype.offerBtnClick = function(event){
@@ -199,6 +212,15 @@ Model.prototype.refreshdata = function(){
 
 	Model.prototype.modelActive = function(event){
 this.refreshdata();
+	};
+
+	Model.prototype.enterserviceBtnClick = function(event){
+		var params = {
+			data : {
+				orderid : orderid
+			}
+		}
+		justep.Shell.showPage(require.toUrl("./bartaskpro.w"), params);
 	};
 
 	return Model;

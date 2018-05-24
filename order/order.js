@@ -42,7 +42,8 @@ define(function(require){
 							bartaskdetailcount : item.bartaskdetailcount,
 							openlockcount : item.openlockcount,
 							artisancount:item.artisancount,
-							hasoffer:item.hasoffer
+							hasoffer:item.hasoffer,
+							offerstatus:item.offerstatus
 						} ]
 					};
 					data.newData(options);
@@ -59,7 +60,8 @@ define(function(require){
 		var params = {
 			data : {
 				id : row.val('id'),
-				hasoffer:row.val('hasoffer')
+				hasoffer:row.val('hasoffer'),
+				offerstatus:row.val('offerstatus')
 			}
 		}
 		justep.Shell.showPage(require.toUrl("./orderdetail.w"), params);

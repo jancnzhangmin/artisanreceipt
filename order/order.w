@@ -20,7 +20,8 @@
   <column name="openlockcount" type="String" xid="xid76"></column>
   <column name="artisancount" type="String" xid="xid1"></column>
   <column name="isselect" type="String" xid="xid2"></column>
-  <column name="hasoffer" type="String" xid="xid3"></column></div></div>  
+  <column name="hasoffer" type="String" xid="xid3"></column>
+  <column name="offerstatus" type="String" xid="xid4"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-content" xid="content1"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list8" data="receiptbartaskData">
@@ -49,6 +50,9 @@
   <span xid="span3" bind-text='val("artisancount")'><![CDATA[0]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3">
    <div class="x-col" xid="col8"><span xid="span4"><![CDATA[状态]]></span></div>
-   <div class="x-col text-right" xid="col9"><span xid="span5" bind-text=' val("hasoffer") == 1 ? "已报价" : "未参与"'></span></div></div></li> </ul> </div></div>
+   <div class="x-col text-right" xid="col9"><span xid="span2" bind-visible=' val("offerstatus") == 0'><![CDATA[未参与]]></span>
+  <span xid="span5" bind-visible=' val("offerstatus") == 1'><![CDATA[已报价]]></span>
+  <span xid="span6" bind-visible=' val("offerstatus") == 2'><![CDATA[用户未选中]]></span>
+  <span xid="span7" bind-visible=' val("offerstatus") == 3'><![CDATA[用户已支付]]></span></div></div></li> </ul> </div></div>
   </div> 
 </div>

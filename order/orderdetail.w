@@ -82,8 +82,10 @@
             </a> 
           </div>  
           <div class="x-titlebar-title" style="color:#808080;font-weight:lighter;">明细</div>  
-          <div class="x-titlebar-right reverse"> 
-          </div>
+          <div class="x-titlebar-right reverse" style="padding-top:5px;"> 
+          <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="进入安装" xid="enterserviceBtn" style="color:#2671b9;font-size:small;" onClick="enterserviceBtnClick" disabled="true">
+   <i xid="i4"></i>
+   <span xid="span45">进入安装</span></a></div>
         </div> 
       </div>  
     <div class="x-panel-content x-cards" xid="content1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:white;">
@@ -182,7 +184,7 @@
        <span xid="span42" bind-text='val("summary")'></span></div> </div> </li> </ul> </div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
    <div class="x-col" xid="col13"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="我要报价" xid="offerBtn" onClick="offerBtnClick" bind-visible=" $model.offerData.count() == 0">
    <i xid="i1"></i>
-   <span xid="span27">我要报价</span></a></div></div><div xid="div1" bind-visible=" $model.offerData.count() &gt; 0"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row27">
+   <span xid="span27">我要报价</span></a></div></div><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row27">
    <div class="x-col text-center" xid="col16"><span xid="span28"><![CDATA[我的报价]]></span>
   </div></div>
   <div component="$UI/system/components/justep/smartContainer/smartContainer" class="x-smartcontainer" xid="smartContainer6" style="background-color:white;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row28">
