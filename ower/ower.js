@@ -27,7 +27,7 @@ define(function(require) {
 	};
 
 	Model.prototype.li6Click = function(event) {
-		this.comp('messageDialog1').show();
+		justep.Shell.showPage(require.toUrl('./withdrawals.w'));
 	};
 
 	Model.prototype.modelActive = function(event) {
@@ -51,6 +51,25 @@ define(function(require) {
 				// justep.Util.hint("错误，请检查网络");
 			}
 		});
+
+		$.ajax({
+			async : false,
+			url : url + "apis/avaamount",
+			type : "GET",
+			dataType : 'jsonp',
+			jsonp : 'callback',
+			timeout : 5000,
+			data : {
+				openid : openid
+			},
+			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+				$(self.getElementByXid("span11")).text(parseFloat(jsonstr.avaamount).toFixed(2) + '元');
+			},
+			error : function(xhr) {
+				// justep.Util.hint("错误，请检查网络");
+			}
+		});
+
 	};
 
 	Model.prototype.modelLoad = function(event) {
@@ -67,6 +86,23 @@ define(function(require) {
 			},
 			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
 				$(self.getElementByXid("span1")).text(jsonstr.artisanuser.username);
+			},
+			error : function(xhr) {
+				// justep.Util.hint("错误，请检查网络");
+			}
+		});
+				$.ajax({
+			async : false,
+			url : url + "apis/avaamount",
+			type : "GET",
+			dataType : 'jsonp',
+			jsonp : 'callback',
+			timeout : 5000,
+			data : {
+				openid : openid
+			},
+			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+				$(self.getElementByXid("span11")).text(parseFloat(jsonstr.avaamount).toFixed(2) + '元');
 			},
 			error : function(xhr) {
 				// justep.Util.hint("错误，请检查网络");

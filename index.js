@@ -2,7 +2,8 @@ var url = 'http://artisan.liushushu.com/';
 //var url = 'http://192.168.0.109:3000/';
 
 var openid;
-//var openid='opN8uxEts2tNZpp2U8Nm8V_ecV1c';
+//openid='opN8uxEts2tNZpp2U8Nm8V_ecV1c';
+//openid='opN8uxHw0bq4JqLEY0u2BiIv0NC0';//高斌
 define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");

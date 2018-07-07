@@ -1,0 +1,24 @@
+.form-control {
+	border: 1px solid rgba(38, 113, 185, 0.2);
+}
+/*页顶按钮组*/
+.x-liushushu-top.btn-group {
+	background-color: #fff;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.x-liushushu-top.btn-group .btn {
+	border-top: 0;
+}
+
+.x-liushushu-top.btn-group .btn span {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.x-card.btn-group .btn.active {
+	color: #2671b9;
+	padding: 0;
+	border-top: 0;
+	border-bottom: 2px solid #2671b9;
+}

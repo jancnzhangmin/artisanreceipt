@@ -6,6 +6,7 @@ define(function(require) {
 	var orderid;
 	var bartaskproid;
 	var swiper;
+	var receivablestatus = -1;
 	var Model = function() {
 		this.callParent();
 	};
@@ -37,11 +38,12 @@ define(function(require) {
 						artisanuser_id : jsonstr.processtask.artisanuser_id,
 						begintime : justep.Date.toString(new Date(Date.parse(jsonstr.processtask.begintime)), "yyyy-MM-dd hh:mm:ss"),
 						endtime : justep.Date.toString(new Date(Date.parse(jsonstr.processtask.endtime)), "yyyy-MM-dd hh:mm:ss"),
-						summary : jsonstr.processtask.summary
+						summary : jsonstr.processtask.summary,
+						needreceivable : jsonstr.processtask.needreceivable,
+						receivable : jsonstr.processtask.receivable
 					} ]
 				};
 				data.newData(options);
-
 				var data = self.comp("bartaskproimageData");
 				data.clear();
 				$.each(jsonstr.bartaskproimages, function(i, item) {
@@ -56,22 +58,53 @@ define(function(require) {
 
 				bartaskproid = jsonstr.processtask.id;
 
-//				$(self.getElementByXid("begindiv")).hide();
-//				$(self.getElementByXid("begintimediv")).hide();
-//				$(self.getElementByXid("enddiv")).hide();
-//				$(self.getElementByXid("endtimediv")).hide();
+				// $(self.getElementByXid("begindiv")).hide();
+				// $(self.getElementByXid("begintimediv")).hide();
+				// $(self.getElementByXid("enddiv")).hide();
+				// $(self.getElementByXid("endtimediv")).hide();
 
-				if (jsonstr.processtask.begintime == null) {
-					$(self.getElementByXid("begindiv")).show();
-				} else {
-					$(self.getElementByXid("begintimediv")).show();
+//				if (jsonstr.processtask.begintime == null) {
+//					$(self.getElementByXid("begindiv")).show();
+//					//$(self.getElementByXid("enddiv")).hide();
+//				} else {
+//					$(self.getElementByXid("begintimediv")).show();
+//				}
+//
+//				if (jsonstr.processtask.endtime == null) {
+//				//$(self.getElementByXid("begindiv")).hide();
+//					$(self.getElementByXid("enddiv")).show();
+//				} else {
+//					$(self.getElementByXid("endtimediv")).show();
+//				}
+				$(self.getElementByXid("begindiv")).hide();
+				$(self.getElementByXid("enddiv")).hide();
+				$(self.getElementByXid("begintimediv")).hide();
+				$(self.getElementByXid("endtimediv")).hide();
+				if(jsonstr.processtask.begintime == null && jsonstr.processtask.endtime == null){
+				$(self.getElementByXid("begindiv")).show();
+				}else if(jsonstr.processtask.begintime != null && jsonstr.processtask.endtime == null){
+				$(self.getElementByXid("enddiv")).show();
+				}
+				
+				if(jsonstr.processtask.begintime != null){
+				$(self.getElementByXid("begintimediv")).show();
+				}
+				if(jsonstr.processtask.endtime != null){
+				$(self.getElementByXid("endtimediv")).show();
+				self.comp('radio1').set({
+				'disabled':true
+				});
+				self.comp('radio2').set({
+				'disabled':true
+				});
 				}
 
-				if (jsonstr.processtask.endtime == null) {
-					$(self.getElementByXid("enddiv")).show();
+				if (jsonstr.processtask.needreceivable == 1) {
+					$(self.getElementByXid("receivablediv")).show();
 				} else {
-					$(self.getElementByXid("endtimediv")).show();
+					$(self.getElementByXid("receivablediv")).hide();
 				}
+				
 
 			},
 			error : function(xhr) {
@@ -111,6 +144,13 @@ define(function(require) {
 
 	Model.prototype.endBtnClick = function(event) {
 		var self = this;
+		if (self.comp('bartaskproData').getFirstRow().val('needreceivable') == 1) {
+			if (receivablestatus == -1) {
+				self.comp('messageDialog1').show();
+				return false;
+			}
+
+		}
 		$.ajax({
 			async : false,
 			url : url + "apis/endservice",
@@ -121,7 +161,8 @@ define(function(require) {
 			data : {
 				orderid : orderid,
 				openid : openid,
-				summary:self.comp('textarea1').val()
+				summary : self.comp('textarea1').val(),
+				receivable : receivablestatus
 			},
 			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
 				self.refreshdata();
@@ -146,6 +187,7 @@ define(function(require) {
 			oXHR = new XMLHttpRequest();
 			oXHR.addEventListener('load', function(resUpload) {
 				// 成功
+				self.comp('popOver2').hide();
 				self.refreshdata();
 			}, false);
 			oXHR.addEventListener('error', function() {
@@ -154,7 +196,17 @@ define(function(require) {
 			oXHR.addEventListener('abort', function() {
 				// 上传中断
 			}, false);
+			oXHR.addEventListener('progress', function(evt) {
+				// 进度
+
+				var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+				self.comp('progress1').set({
+					'valuenow' : percentComplete
+				});
+
+			}, false);
 			oXHR.open('POST', url + "apis/setbartaskimage");
+			self.comp('popOver2').show();
 			oXHR.send(vFD);
 		}
 	};
@@ -166,6 +218,14 @@ define(function(require) {
 				el : '.swiper-pagination',
 			},
 		});
+	};
+
+	Model.prototype.radio1Change = function(event) {
+		receivablestatus = 1;
+	};
+
+	Model.prototype.radio2Change = function(event) {
+		receivablestatus = 0;
 	};
 
 	return Model;

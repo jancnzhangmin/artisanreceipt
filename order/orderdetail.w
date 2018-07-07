@@ -50,14 +50,16 @@
    <column name="endaddress" type="String" xid="xid16"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="barbaseData" idColumn="id">
    <column name="id" type="String" xid="xid20"></column>
-   <column name="bartaskdetail_id" type="String" xid="xid21"></column>
-   <column name="name" type="String" xid="xid23"></column>
-   <column name="summary" type="String" xid="xid24"></column></div>
+  <column name="bartaskdetail_id" type="String" xid="xid21"></column>
+  <column name="name" type="String" xid="xid23"></column>
+  <column name="summary" type="String" xid="xid24"></column>
+  <column name="isselect" type="String" xid="xid34"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="barincrementData" idColumn="id">
    <column name="id" type="String" xid="column18"></column>
-   <column name="bartaskdetail_id" type="String" xid="column19"></column>
-   <column name="name" type="String" xid="column16"></column>
-   <column name="summary" type="String" xid="column17"></column></div>
+  <column name="bartaskdetail_id" type="String" xid="column19"></column>
+  <column name="name" type="String" xid="column16"></column>
+  <column name="summary" type="String" xid="column17"></column>
+  <column name="isselect" type="String" xid="xid35"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="fingerData" idColumn="id" confirmDelete="false">
    <column name="id" type="String" xid="column20"></column>
    <column name="model" type="String" xid="xid43"></column>
@@ -67,7 +69,10 @@
    <column name="summary" type="String" xid="xid46"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="offerData" idColumn="id"><column name="id" type="String" xid="xid25"></column>
   <column name="price" type="String" xid="xid26"></column>
-  <column name="summary" type="String" xid="xid33"></column></div></div>  
+  <column name="summary" type="String" xid="xid33"></column></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="usercancelreasonData" idColumn="id">
+   <column name="id" type="String" xid="column22"></column>
+   <column name="reason" type="String" xid="column21"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -83,9 +88,12 @@
           </div>  
           <div class="x-titlebar-title" style="color:#808080;font-weight:lighter;">明细</div>  
           <div class="x-titlebar-right reverse" style="padding-top:5px;"> 
-          <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="进入安装" xid="enterserviceBtn" style="color:#2671b9;font-size:small;" onClick="enterserviceBtnClick" disabled="true">
+          <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="进入安装" xid="enterserviceBtn" style="color:#2671b9;font-size:small;display:none;" onClick="enterserviceBtnClick" disabled="true" bind-visible="false">
    <i xid="i4"></i>
-   <span xid="span45">进入安装</span></a></div>
+   <span xid="span45">进入安装</span></a>
+  <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button5" icon="fa fa-navicon" onClick="button5Click" style="color:#808080;">
+   <i xid="i6" class="fa fa-navicon"></i>
+   <span xid="span51"></span></a></div>
         </div> 
       </div>  
     <div class="x-panel-content x-cards" xid="content1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="background-color:white;">
@@ -99,12 +107,12 @@
    <div class="x-col" xid="col11"><span xid="span5"><![CDATA[预约服务时间]]></span></div>
    <div class="x-col text-right" xid="col12"><span xid="span6" bind-text='$model.bartaskData.val("installtime")'></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
-   <div class="x-col" xid="col14"><span xid="span7"><![CDATA[预出价格]]></span></div>
-   <div class="x-col text-right" xid="col15"><span xid="span8" bind-text='$model.bartaskData.val("preprice")'></span></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
+   <div class="x-col" xid="col14"><span xid="span7"><![CDATA[代收款(元)]]></span></div>
+   <div class="x-col text-right" xid="col15"><span xid="span8" bind-text="'￥' + $model.bartaskData.val(&quot;preprice&quot;)" style="color:#ff651a;"></span></div></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" bind-visible=' $model.bartaskData.val("status") &gt; 1'>
    <div class="x-col" xid="col17"><span xid="span9"><![CDATA[联系人]]></span></div>
    <div class="x-col text-right" xid="col18"><span xid="span10" bind-text='$model.bartaskData.val("contact")'></span></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" bind-visible=' $model.bartaskData.val("status") &gt; 1'>
    <div class="x-col" xid="col20"><span xid="span11"><![CDATA[联系方式]]></span></div>
    <div class="x-col text-right" xid="col21"><span xid="span12" bind-text='$model.bartaskData.val("contactphone")'></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8">
@@ -157,31 +165,42 @@
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row24">
       <div class="x-col" xid="col61">
        <span xid="span35">基础服务</span></div> </div> 
-     <div component="$UI/system/components/justep/list/list" class="x-list" xid="list5" data="barbaseData" filter=' $row.val("bartaskdetail_id") == val("id")'>
+     <div component="$UI/system/components/justep/list/list" class="x-list" xid="list5" data="barbaseData">
       <ul class="x-list-template" xid="listTemplateUl5" style="padding-left:10px;padding-right:10px;">
-       <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-xs" label="button" xid="button1" bind-text=' val("name")'>
+        
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row33">
+   <div class="x-col" xid="col8"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-xs" label="button" xid="button1" bind-text=' val("name")' bind-css=" val(&quot;isselect&quot;) == 0 ? 'x-gray' : ''">
         <i xid="i2"></i>
-        <span xid="span36"></span></a> </ul> </div> 
+        <span xid="span36"></span></a>
+  <span xid="span46" bind-text='val("summary")'></span></div>
+   </div></ul> </div> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row26">
       <div class="x-col" xid="col65">
        <span xid="span37">增值服务</span></div> </div> 
-     <div component="$UI/system/components/justep/list/list" class="x-list" xid="list6" data="$model.barincrementData" filter=' $row.val("bartaskdetail_id") == val("id")'>
+     <div component="$UI/system/components/justep/list/list" class="x-list" xid="list6" data="barincrementData">
       <ul class="x-list-template" xid="listTemplateUl6" style="padding-left:10px;padding-right:10px;">
-       <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-xs" label="button" xid="button2" bind-text=' val("name")'>
+        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row34">
+   <div class="x-col" xid="col37"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-xs" label="button" xid="button2" bind-text='val("name")' bind-css="val(&quot;isselect&quot;) == 0 ? 'x-gray' : ''">
         <i xid="i3"></i>
-        <span xid="span38"></span></a> </ul> </div> </li> </ul> 
-  </div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row20" bind-visible=" $model.openlockData.count() &gt; 0">
+        <span xid="span38"></span></a>
+  <span xid="span47" bind-text='val("summary")'></span></div></div></ul> 
+  </div> </li> </ul> 
+  </div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row20" bind-visible=" $model.fingerData.count()  &gt; 0">
    <div class="x-col text-center" xid="col28"><span xid="span26"><![CDATA[维修 开锁服务]]></span>
-  </div></div><div component="$UI/system/components/justep/smartContainer/smartContainer" class="x-smartcontainer" xid="smartContainer5" bind-visible=" $model.openlockData.count() &gt; 0"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list8" data="openlockData">
+  </div></div><div component="$UI/system/components/justep/smartContainer/smartContainer" class="x-smartcontainer" xid="smartContainer5" bind-visible="$model.fingerData.count() &gt; 0"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list8" data="fingerData">
    <ul class="x-list-template" xid="listTemplateUl8">
     <li xid="li5" class="list-group-item" style="padding:0px;">
-     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row29">
+     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row36">
+   <div class="x-col" xid="col1">
+    <span xid="span49"><![CDATA[服务项目]]></span></div> 
+   <div class="x-col text-right" xid="col22"><span xid="span50" bind-text='val("model")'></span></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row29">
       <div class="x-col" xid="col7">
        <span xid="span41">描述</span></div> 
       <div class="x-col" xid="col4"></div></div> 
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row30">
       <div class="x-col" xid="col29">
-       <span xid="span42" bind-text='val("summary")'></span></div> </div> </li> </ul> </div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
+       <span xid="span42" bind-text='val("summary")'></span></div> </div> 
+  </li> </ul> </div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
    <div class="x-col" xid="col13"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="我要报价" xid="offerBtn" onClick="offerBtnClick" bind-visible=" $model.offerData.count() == 0">
    <i xid="i1"></i>
    <span xid="span27">我要报价</span></a></div></div><div xid="div1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row27">
@@ -193,6 +212,47 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row31">
    <div class="x-col" xid="col35"><span xid="span43"><![CDATA[描述]]></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row32">
-   <div class="x-col" xid="col40"><span xid="span44" bind-text='$model.offerData.val("summary")'></span></div></div></div></div></div>
+   <div class="x-col" xid="col40"><span xid="span44" bind-text='$model.offerData.val("summary")'></span>
+  </div></div></div></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row35" bind-visible='$model.bartaskData.val("status") == 2 || $model.bartaskData.val("status") == 3 ||  $model.bartaskData.val("status") == 4'>
+   <div class="x-col" xid="col32"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="进入安装" xid="button3" onClick="button3Click">
+   <i xid="i5"></i>
+   <span xid="span48">进入安装</span></a></div></div></div>
   </div> 
-</div>
+<resource xid="resource2"><require xid="require1" url="css!$UI/artisanreceipt/font-awesome-4.7.0/css/fa.icons"></require></resource>
+  <div component="$UI/system/components/justep/popMenu/popMenu" class="x-popMenu" direction="right-bottom" xid="popMenu3" anchor="button5">
+   <div class="x-popMenu-overlay" xid="div9"></div>
+   <ul component="$UI/system/components/justep/menu/menu" class="x-menu dropdown-menu x-popMenu-content" xid="menu3">
+    
+    <li class="x-menu-item" xid="item3">
+     <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="　取消定单" xid="cancelBtn" icon="fa fa-remove" onClick="cancelBtnClick" bind-visible=' $model.bartaskData.val("status") == 3 || $model.bartaskData.val("status") == 4'>
+      <i xid="i7" class="fa fa-remove"></i>
+      <span xid="span53">　取消定单</span></a> </li> 
+    
+    <li class="x-menu-item" xid="item5">
+     <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="　投诉建议" xid="button9" icon="fa fa-user-o">
+      <i xid="i9" class="fa fa-user-o"></i>
+      <span xid="span55">　投诉建议</span></a> </li> </ul> </div>
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="usercancelreasonPop">
+   <div class="x-popOver-overlay" xid="div3"></div>
+   <div class="x-popOver-content" xid="div4" style="width:70%">
+    <div component="$UI/system/components/justep/smartContainer/smartContainer" class="x-smartcontainer" xid="smartContainer7" style="background-color:white;">
+     <div component="$UI/system/components/justep/row/row" class="x-row tb-box" xid="row37">
+      <div class="x-col" xid="col38">
+       <a component="$UI/system/components/justep/button/button" class="btn btn-sm btn-only-icon tb-backBtn" label="button" xid="button4" icon="fa fa-times" onClick="button4Click">
+        <i xid="i8" class="fa fa-times"></i>
+        <span xid="span57"></span></a> </div> </div> 
+     <div component="$UI/system/components/justep/list/list" class="x-list" xid="list11" data="usercancelreasonData">
+      <ul class="x-list-template" xid="listTemplateUl11" style="margin-bottom:-1px;">
+       <li xid="li10" class="list-group-item">
+        <span component="$UI/system/components/justep/button/radio" class="x-radio" xid="radio1" name="usercancelreason" onChange="radio1Change"></span>
+        <span xid="span52" bind-text='val("reason")'></span></li> </ul> </div> 
+     <ul xid="ul1">
+      <li xid="li9" class="list-group-item">
+       <span component="$UI/system/components/justep/button/radio" class="x-radio" xid="otherreasonradio" name="usercancelreason" label="其它"></span>
+       <textarea component="$UI/system/components/justep/textarea/textarea" class="form-control" xid="textarea1" bind-keyup="textarea1Keyup" valueUpdateMode="keyup"></textarea></li> </ul> 
+     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row37">
+      <div class="x-col" xid="col34">
+       <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="提交" xid="seasonsubmitBtn" onClick="seasonsubmitBtnClick">
+        <i xid="i10"></i>
+        <span xid="span56">提交</span></a> </div> </div> </div> </div> </div></div>

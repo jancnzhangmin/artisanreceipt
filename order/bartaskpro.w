@@ -6,7 +6,9 @@
   <column name="artisanuser_id" type="String" xid="xid3"></column>
   <column name="begintime" type="String" xid="xid4"></column>
   <column name="endtime" type="String" xid="xid5"></column>
-  <column name="summary" type="String" xid="xid6"></column></div>
+  <column name="summary" type="String" xid="xid6"></column>
+  <column name="needreceivable" type="String" xid="xid9"></column>
+  <column name="receivable" type="String" xid="xid10"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bartaskproimageData" idColumn="id"><column name="id" type="String" xid="xid7"></column>
   <column name="bartaskproimage" type="String" xid="xid8"></column></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
@@ -43,7 +45,10 @@
    <ul class="x-list-template" xid="listTemplateUl1">
     <li xid="li1" class="col-xs-4 col-sm-3"><img src=" " alt="" xid="image1" bind-attr-src=' val("bartaskproimage")' style="width:100%;" bind-click="image1Click"></img></li></ul> 
   </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" style="height:30%;">
-   <div class="x-col" xid="col4" style="height:100%;"><textarea component="$UI/system/components/justep/textarea/textarea" class="form-control" xid="textarea1" style="height:100%;" bind-ref='$model.bartaskproData.ref("summary")'></textarea></div></div><div xid="enddiv" style="display:none;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row4">
+   <div class="x-col" xid="col4" style="height:100%;"><textarea component="$UI/system/components/justep/textarea/textarea" class="form-control" xid="textarea1" style="height:100%;" bind-ref='$model.bartaskproData.ref("summary")'></textarea></div></div><div xid="receivablediv">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" style="background-color:white;">
+   <div class="x-col text-center" xid="col2"><span component="$UI/system/components/justep/button/radio" class="x-radio" xid="radio1" label="代收款已收" name="a" onChange="radio1Change" bind-checked=' $model.bartaskproData.val("receivable") == 0'></span></div>
+   <div class="x-col text-center" xid="col7"><span component="$UI/system/components/justep/button/radio" class="x-radio" xid="radio2" label="代收款未收" name="a" onChange="radio2Change" bind-checked=' $model.bartaskproData.val("receivable") == 1'></span></div></div></div><div xid="enddiv" style="display:none;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row4">
    <div class="x-col" xid="col12"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="服务完成" xid="endBtn" onClick="endBtnClick">
    <i xid="i3"></i>
    <span xid="span5">服务完成</span></a></div></div></div>
@@ -57,4 +62,11 @@
    <div class="x-popOver-content" xid="div2" style="width:100%;overflow-y: inherit;"><div component="$UI/system/components/justep/list/list" class="x-list swiper-container" xid="list2" data="bartaskproimageData">
    <ul class="x-list-template x-min-height swiper-wrapper" xid="listTemplateUl2">
     <li xid="li2" class="swiper-slide" style="height:auto;"><img src=" " alt="" xid="image2" bind-attr-src=' val("bartaskproimage")' style="width:100%;"></img></li></ul> 
-  <div xid="div3" class="swiper-pagination"></div></div></div></div></div>
+  <div xid="div3" class="swiper-pagination"></div></div></div></div>
+  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" direction="auto" xid="popOver2" dismissible="false">
+   <div class="x-popOver-overlay" xid="div4"></div>
+   <div class="x-popOver-content" xid="div5" style="width:100%;background-color:transparent;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8">
+   <div class="x-col" xid="col11"><div class="progress" component="$UI/system/components/bootstrap/progress/progress" xid="progress1" valuenow="0">
+   <div class="progress-bar progress-bar-primary" role="progressbar" xid="progressBar1">
+    <span xid="span9">0%</span></div> </div></div></div></div></div><span component="$UI/system/components/justep/messageDialog/messageDialog" xid="messageDialog1" message="请选择代收款是否已收"></span></div>

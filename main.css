@@ -1,0 +1,5 @@
+/*页脚按钮组*/
+.x-liushushu.btn-group{ background-color:#fff;border-bottom:1px solid #f0f0f0;}
+.x-liushushu.btn-group .btn{ border-top:0;}
+.x-liushushu.btn-group .btn span{ font-size:12px; font-weight:normal;}
+.x-card.btn-group .btn.active{ color:#2671b9; padding:0;border-top:0;}

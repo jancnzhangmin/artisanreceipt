@@ -1,0 +1,12 @@
+.blue-border {
+	padding: 10px;
+	padding-bottom:0px;
+box-shadow: 3px 3px 3px #cccccc;
+}
+
+.selectcolor{
+	background: rgba(38,113,185,0.3);
+	border-color:#2671b9;
+	border-radius: 5px;
+	box-shadow:0px 0px 2px #2671b9;
+}
