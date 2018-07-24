@@ -19,7 +19,8 @@ define(function(require) {
 	};
 
 	Model.prototype.li4Click = function(event) {
-		this.comp('messageDialog1').show();
+		//this.comp('messageDialog1').show();
+		justep.Shell.showPage(require.toUrl('./appraise.w'));
 	};
 
 	Model.prototype.li5Click = function(event) {
@@ -45,7 +46,7 @@ define(function(require) {
 			},
 			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
 				$(this.getElementByXid("span1")).val(jsonstr.artisanuser.username);
-				$(self.getElementByXid("image1")).attr('src', jsonstr.artisanuser.headurl);
+				$(self.getElementByXid("image37")).attr('src', jsonstr.artisanuser.headurl);
 			},
 			error : function(xhr) {
 				// justep.Util.hint("错误，请检查网络");
@@ -86,6 +87,7 @@ define(function(require) {
 			},
 			success : function(jsonstr) {// 客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
 				$(self.getElementByXid("span1")).text(jsonstr.artisanuser.username);
+				$(self.getElementByXid("image37")).attr('src', jsonstr.artisanuser.headurl);
 			},
 			error : function(xhr) {
 				// justep.Util.hint("错误，请检查网络");
@@ -108,6 +110,10 @@ define(function(require) {
 				// justep.Util.hint("错误，请检查网络");
 			}
 		});
+	};
+
+	Model.prototype.li7Click = function(event){
+justep.Shell.showPage(require.toUrl('./qrcode.w'));
 	};
 
 	return Model;

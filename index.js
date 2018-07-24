@@ -1,5 +1,5 @@
 var url = 'http://artisan.liushushu.com/';
-//var url = 'http://192.168.0.109:3000/';
+//var url = 'http://192.168.1.103:3000/';
 
 var openid;
 //openid='opN8uxEts2tNZpp2U8Nm8V_ecV1c';
