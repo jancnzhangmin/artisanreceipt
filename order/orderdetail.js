@@ -80,7 +80,8 @@ define(function(require) {
 						contact : jsonstr.bartask.contact,
 						contactphone : jsonstr.bartask.contactphone,
 						summary : jsonstr.bartask.summary,
-						paytype : paytype
+						paytype : paytype,
+						registrant:jsonstr.bartask.registrant
 					} ]
 				};
 				data.newData(options);
@@ -118,7 +119,9 @@ define(function(require) {
 							id : item.id,
 							bartask_id : item.bartask_id,
 							product : item.product,
-							lock : item.lock
+							lock : item.lock,
+							brand:item.brand,
+							projectdef:item.projectdef
 						} ]
 					};
 					bartaskdetaildata.newData(options);

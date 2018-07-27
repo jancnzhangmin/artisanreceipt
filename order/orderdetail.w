@@ -3,20 +3,21 @@
   <div component="$UI/system/components/justep/model/model" xid="model" style="top:53px;left:21px;height:auto;" onParamsReceive="modelParamsReceive" onActive="modelActive"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bartaskData" idColumn="id">
    <column name="id" type="String" xid="xid1"></column>
-   <column name="preprice" type="String" xid="xid2"></column>
-   <column name="province" type="String" xid="xid3"></column>
-   <column name="city" type="String" xid="xid4"></column>
-   <column name="district" type="String" xid="xid5"></column>
-   <column name="address" type="String" xid="xid6"></column>
-   <column name="status" type="String" xid="xid7"></column>
-   <column name="installtime" type="String" xid="xid8"></column>
-   <column name="ordernumber" type="String" xid="xid9"></column>
-   <column name="created_at" type="String" xid="xid10"></column>
-   <column name="updated_at" type="String" xid="xid11"></column>
-   <column name="contact" type="String" xid="xid12"></column>
-   <column name="contactphone" type="String" xid="xid13"></column>
-   <column name="summary" type="String" xid="xid14"></column>
-   <column name="paytype" type="String" xid="xid15"></column></div>
+  <column name="preprice" type="String" xid="xid2"></column>
+  <column name="province" type="String" xid="xid3"></column>
+  <column name="city" type="String" xid="xid4"></column>
+  <column name="district" type="String" xid="xid5"></column>
+  <column name="address" type="String" xid="xid6"></column>
+  <column name="status" type="String" xid="xid7"></column>
+  <column name="installtime" type="String" xid="xid8"></column>
+  <column name="ordernumber" type="String" xid="xid9"></column>
+  <column name="created_at" type="String" xid="xid10"></column>
+  <column name="updated_at" type="String" xid="xid11"></column>
+  <column name="contact" type="String" xid="xid12"></column>
+  <column name="contactphone" type="String" xid="xid13"></column>
+  <column name="summary" type="String" xid="xid14"></column>
+  <column name="paytype" type="String" xid="xid15"></column>
+  <column name="registrant" type="String" xid="xid39"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="measureData" idColumn="id" confirmDelete="false">
    <column name="id" type="String" xid="column1"></column>
    <column name="isfloorheat" type="String" xid="column2"></column>
@@ -27,17 +28,19 @@
    <column name="doorset" type="String" xid="column7"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="bartaskdetailData" idColumn="id" confirmDelete="false">
    <column name="id" type="String" xid="xid22"></column>
-   <column name="product_id" type="String" xid="xid27"></column>
-   <column name="producbase" type="String" xid="xid28"></column>
-   <column name="productincrement" type="String" xid="xid29"></column>
-   <column name="number" type="String" xid="xid30"></column>
-   <column name="floor" type="String" xid="xid31"></column>
-   <column name="summary" type="String" xid="xid32"></column>
-   <column name="productbaseid" type="String" xid="xid37"></column>
-   <column name="productincrementid" type="String" xid="xid42"></column>
-   <column name="brand" type="String" xid="xid17"></column>
-   <column name="product" type="String" xid="xid18"></column>
-   <column name="lock" type="String" xid="xid19"></column></div>
+  <column name="product_id" type="String" xid="xid27"></column>
+  <column name="producbase" type="String" xid="xid28"></column>
+  <column name="productincrement" type="String" xid="xid29"></column>
+  <column name="number" type="String" xid="xid30"></column>
+  <column name="floor" type="String" xid="xid31"></column>
+  <column name="summary" type="String" xid="xid32"></column>
+  <column name="productbaseid" type="String" xid="xid37"></column>
+  <column name="productincrementid" type="String" xid="xid42"></column>
+  <column name="brand" type="String" xid="xid17"></column>
+  <column name="product" type="String" xid="xid18"></column>
+  <column name="lock" type="String" xid="xid19"></column>
+  <column name="brand" type="String" xid="xid36"></column>
+  <column name="projectdef" type="String" xid="xid38"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="transitData" idColumn="id" confirmDelete="false">
    <column name="id" type="String" xid="column12"></column>
    <column name="startprovince" type="String" xid="column13"></column>
@@ -109,13 +112,13 @@
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
    <div class="x-col" xid="col14"><span xid="span7"><![CDATA[代收款(元)]]></span></div>
    <div class="x-col text-right" xid="col15"><span xid="span8" bind-text="'￥' + $model.bartaskData.val(&quot;preprice&quot;)" style="color:#ff651a;"></span></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" bind-visible=' $model.bartaskData.val("status") &gt; 1'>
-   <div class="x-col" xid="col17"><span xid="span9"><![CDATA[联系人]]></span></div>
-   <div class="x-col text-right" xid="col18"><span xid="span10" bind-text='$model.bartaskData.val("contact")'></span></div></div>
+  
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7" bind-visible=' $model.bartaskData.val("status") &gt; 1'>
-   <div class="x-col" xid="col20"><span xid="span11"><![CDATA[联系方式]]></span></div>
+   <div class="x-col" xid="col20"><span xid="span11"><![CDATA[现场联系人]]></span></div>
    <div class="x-col text-right" xid="col21"><span xid="span12" bind-text='$model.bartaskData.val("contactphone")'></span></div></div>
-  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6" bind-visible=' $model.bartaskData.val("status") &gt; 1'>
+   <div class="x-col" xid="col17"><span xid="span9"><![CDATA[发单人]]></span></div>
+   <div class="x-col text-right" xid="col18"><span xid="span10" bind-text='$model.bartaskData.val("registrant")'></span></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row8">
    <div class="x-col" xid="col23"><span xid="span13"><![CDATA[额外费用支付]]></span></div>
    <div class="x-col text-right" xid="col24"><span xid="span14" bind-text='$model.bartaskData.val("paytype")'></span></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9">
@@ -152,7 +155,11 @@
        <span xid="span29">品牌</span></div> 
       <div class="x-col text-right" xid="col54">
        <span xid="span30" bind-text='val("brand")'></span></div> </div> 
-     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
+     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row38">
+   <div class="x-col" xid="col41">
+    <span xid="span54"><![CDATA[项目]]></span></div> 
+   <div class="x-col text-right" xid="col43">
+    <span xid="span58" bind-text='val("projectdef")'></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
       <div class="x-col" xid="col56">
        <span xid="span32">型号</span></div> 
       <div class="x-col text-right" xid="col55">
@@ -184,7 +191,8 @@
         <i xid="i3"></i>
         <span xid="span38"></span></a>
   <span xid="span47" bind-text='val("summary")'></span></div></div></ul> 
-  </div> </li> </ul> 
+  </div> 
+  </li> </ul> 
   </div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row20" bind-visible=" $model.fingerData.count()  &gt; 0">
    <div class="x-col text-center" xid="col28"><span xid="span26"><![CDATA[维修 开锁服务]]></span>
   </div></div><div component="$UI/system/components/justep/smartContainer/smartContainer" class="x-smartcontainer" xid="smartContainer5" bind-visible="$model.fingerData.count() &gt; 0"><div component="$UI/system/components/justep/list/list" class="x-list" xid="list8" data="fingerData">

@@ -1,9 +1,9 @@
 var url = 'http://artisan.liushushu.com/';
-//var url = 'http://192.168.1.103:3000/';
+ //var url = 'http://192.168.1.102:3000/';
 
 var openid;
-//openid='opN8uxEts2tNZpp2U8Nm8V_ecV1c';
-//openid='opN8uxHw0bq4JqLEY0u2BiIv0NC0';//高斌
+// openid='opN8uxEts2tNZpp2U8Nm8V_ecV1c';
+ //openid='opN8uxHw0bq4JqLEY0u2BiIv0NC0';//高斌
 define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
@@ -22,8 +22,8 @@ define(function(require) {
 
 	};
 
-	Model.prototype.modelLoad = function(event){
-			openid = this.getContext().getRequestParameter("openid");
+	Model.prototype.modelLoad = function(event) {
+		openid = this.getContext().getRequestParameter("openid");
 		$.ajax({
 			async : false,
 			url : url + "apis/setwxartisaninfo",
